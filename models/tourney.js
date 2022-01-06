@@ -1,0 +1,15 @@
+const { Model, DataTypes,} = require('sequelize');
+const sequelize = require('../config/connection');
+class Tourney extends Model { }
+
+Tourney.init({
+    id: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            allowNull: false,
+            primaryKey: true
+    },
+    // need to talk to partners to finish these
+})
+
+module.exports = Tourney;
