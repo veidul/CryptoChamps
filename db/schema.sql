@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS cryptochamps_db;
-CREATE DATABASE cryptochamps_db;
+DROP DATABASE IF EXISTS crypto_db;
+CREATE DATABASE crypto_db;
