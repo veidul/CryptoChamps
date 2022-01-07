@@ -15,7 +15,13 @@ Tourney.init({
     wallets: {
         references wallet
     }
-    
+    startTime: {
+
+    }
+    finishTime: {
+        
+    }
+
 
     // need to talk to partners to finish these
 })
