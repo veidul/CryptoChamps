@@ -1,33 +1,53 @@
-const { Model, DataTypes,} = require('sequelize');
-const sequelize = require('../config/connection');
-class Wallet extends Model { }
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
+class Wallet extends Model {}
 
-Wallet.init({
+Wallet.init(
+  {
     id: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
-            allowNull: false,
-            primaryKey: true
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true,
     },
-    coinName: { BTC
-
+    ticker: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    purchasePrice: { 47895
-
+    purchasePrice: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
     },
-    quantity:{ 1
-
+    quantity: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
     },
-    bank:{ 
-        defaultValue: 25000
-
+    bank: {
+      type: DataTypes.DECIMAL,
+      defaultValue: 25000,
     },
-    userId:{
-
+    userId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id",
+      },
     },
-    tourney:{
-        
-    }
-    // need to talk to partners to finish these
-})
+    tourney: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "tourney",
+        key: "id",
+      },
+    },
+  },
+  {
+    sequelize,
+    timestamps: true,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "wallet",
+  }
+  // need to talk to partners to finish these
+);
 module.exports = Wallet;

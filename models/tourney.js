@@ -1,29 +1,46 @@
-const { Model, DataTypes,} = require('sequelize');
-const sequelize = require('../config/connection');
-class Tourney extends Model { }
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
+class Tourney extends Model {}
 
 Tourney.init({
-    id: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
-            allowNull: false,
-            primaryKey: true
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    allowNull: false,
+    primaryKey: true,
+  },
+  players: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: "user",
+      key: "id",
     },
-    players: {
-        ref player id
-    }
-    wallets: {
-        references wallet
-    }
-    startTime: {
+  },
+  wallets: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: "wallet",
+      key: "id",
+    },
+  },
+  startTime: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  finishTime: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
 
-    }
-    finishTime: {
-        
-    }
-
-
-    // need to talk to partners to finish these
-})
+  // need to talk to partners to finish these
+},
+{
+    sequelize,
+    timestamps: true,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "tourney",
+  }
+);
 
 module.exports = Tourney;
