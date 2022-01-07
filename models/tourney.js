@@ -9,6 +9,14 @@ Tourney.init({
             allowNull: false,
             primaryKey: true
     },
+    players: {
+        ref player id
+    }
+    wallets: {
+        references wallet
+    }
+    
+
     // need to talk to partners to finish these
 })
 

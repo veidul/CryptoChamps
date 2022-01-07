@@ -9,6 +9,25 @@ Wallet.init({
             allowNull: false,
             primaryKey: true
     },
+    coinName: { BTC
+
+    },
+    purchasePrice: { 47895
+
+    },
+    quantity:{ 1
+
+    },
+    bank:{ 
+        defaultValue: 25000
+
+    },
+    userId:{
+
+    },
+    tourney:{
+        
+    }
     // need to talk to partners to finish these
 })
 module.exports = Wallet;

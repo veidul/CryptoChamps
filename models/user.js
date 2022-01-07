@@ -20,6 +20,8 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        wins: {},
+        loses: {},
         email: {
             type: DataTypes.STRING,
             allowNull: false,
