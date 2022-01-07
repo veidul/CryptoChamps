@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Project extends Model {}
+class Crypto extends Model {}
 
-Project.init(
+Crypto.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -18,11 +18,7 @@ Project.init(
     description: {
       type: DataTypes.STRING,
     },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
+
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -40,4 +36,4 @@ Project.init(
   }
 );
 
-module.exports = Project;
+module.exports = Crypto;
