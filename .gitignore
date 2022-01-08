@@ -1,3 +1,6 @@
+# ludies pnpm --global npm modules
+pnpm-lock.yaml
+
 # Logs
 logs
 *.log
