@@ -15,6 +15,9 @@ Tourney.hasMany(User,{
 Tourney.hasMany(Wallet, {
     foreignKey: 'tourney_id'
 });
+Wallet.hasMany(Coins, {
+    foreignKey: 'wallet_id'
+})
 Wallet.belongsTo(User, {
     foreignKey: 'user_id'
 });

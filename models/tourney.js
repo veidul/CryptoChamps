@@ -9,14 +9,14 @@ Tourney.init({
     allowNull: false,
     primaryKey: true,
   },
-  players: {
+  user: {
     type: DataTypes.INTEGER,
     references: {
       model: "user",
       key: "id",
     },
   },
-  wallets: {
+  wallet: {
     type: DataTypes.INTEGER,
     references: {
       model: "wallet",
