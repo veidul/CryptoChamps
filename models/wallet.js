@@ -33,7 +33,7 @@ Wallet.init(
         key: "id",
       },
     },
-    tourney: {
+    tourneyId: {
       type: DataTypes.INTEGER,
       references: {
         model: "tourney",

@@ -20,7 +20,7 @@ Coins.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-    wallet: {
+    walletId: {
         type: DataTypes.INTEGER,
         references: {
           model: "wallet",
