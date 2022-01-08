@@ -1,10 +1,10 @@
 
-{{each coins}}
+{{#each coins as |coin|}}
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{coins.img}}" alt="Card image cap">
+  <img class="card-img-top" src="{{coin.img}}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">{{coins.name}}</h5>
-    <h6 class=>{{coins.ticker}}</h6>
+    <h5 class="card-title">{{coin.name}}</h5>
+    <h6 class=>{{coin.ticker}}</h6>
   </div>
   <p>dynamic price here</p>
   <div class="card-body">
