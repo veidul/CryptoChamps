@@ -32,6 +32,6 @@ Coins.init({
         timestamps: true,
         freezeTableName: true,
         underscored: true,
-        modelName: "tourney",
+        modelName: "coins",
     },)
-module.exports = Tourney;
+module.exports = Coins;
