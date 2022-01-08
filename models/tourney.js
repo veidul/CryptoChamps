@@ -16,13 +16,6 @@ Tourney.init({
       key: "id",
     },
   },
-  wallet: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: "wallet",
-      key: "id",
-    },
-  },
   startTime: {
     type: DataTypes.DATE,
     allowNull: false,
