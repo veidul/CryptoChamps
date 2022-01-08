@@ -1,33 +1,34 @@
 const router = require("express").Router();
-const { User } = require("../models");
+const { User, Coins } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get('/', async (req, res) => {
-  try{
-  res.render('login')}
- catch (err) {
-  res.status(500).json(err);
-}
+  try {
+    res.render('login')
+  }
+  catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/homepage', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const coinsData = await Coins.findAll();
+    
+    const coins = coinsData.map((coins) => coins.get({ plain: true }))
+
+    console.log(coins)
+
+    res.render('homepage', {
+      coins,
+      logged_in: true
     });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
-    router.get('/homepage', withAuth, async (req, res) => {
-      try {
-        // Find the logged in user based on the session ID
-        const coinsData = await Coins.findAll(req.session.user_id, {
-          include: [{ model: coins }],
-        });
-    
-
-    
-        res.render('dashboard', {
-        Coins,
-          logged_in: true
-        });
-      } catch (err) {
-        res.status(500).json(err);
-      }
-  })
-  
 
 // Use withAuth middleware to prevent access to route
 router.get("/profile", withAuth, async (req, res) => {
@@ -56,7 +57,7 @@ router.get("/login", (req, res) => {
     return;
   }
 
-  res.render("login");
+  res.render("homepage");
 });
 
 module.exports = router;
