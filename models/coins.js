@@ -7,6 +7,7 @@ Coins.init({
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
+        autoIncrement: true,
     },
     img: {
         type: DataTypes.STRING,

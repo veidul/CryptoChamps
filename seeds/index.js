@@ -8,7 +8,7 @@ const seedAll = async () => {
   await seedUser();
   console.log('\n----- USER SEEDED -----\n');
   await seedCoins();
-  console.log('\n----- CRYPTO SEEDED -----\n');
+  console.log('\n----- COINS SEEDED -----\n');
 
   process.exit(0);
 };

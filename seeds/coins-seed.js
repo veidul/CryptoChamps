@@ -54,8 +54,8 @@ const coinData = [
     },
 ]
 
-const seedCoins = () => {
-    Coins.bulkCreate(coinData);
+const seedCoins = async () => {
+    await Coins.bulkCreate(coinData);
 }
 
 module.exports = seedCoins;
