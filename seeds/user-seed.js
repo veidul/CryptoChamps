@@ -13,9 +13,9 @@ const userData = [
     }
 ]
 
-const seedCrypto = () => {
-    Coin.bulkCreate(userData);
+const seedUser = () => {
+    User.bulkCreate(userData);
 }
 
-module.exports = seedCrypto;
+module.exports = seedUser;
 

@@ -1,4 +1,4 @@
-const { Coin } = require('../models');
+const { Coins } = require('../models');
 
 const coinData = [
 
@@ -54,9 +54,9 @@ const coinData = [
     },
 ]
 
-const seedCrypto = () => {
-    Coin.bulkCreate(coinData);
+const seedCoins = () => {
+    Coins.bulkCreate(coinData);
 }
 
-module.exports = seedCrypto;
+module.exports = seedCoins;
 
