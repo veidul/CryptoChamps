@@ -26,7 +26,8 @@ Coins.init({
           model: "wallet",
           key: "id",
         },
-    },},
+    },
+},
 {
         sequelize,
         timestamps: true,
