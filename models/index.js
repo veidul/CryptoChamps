@@ -1,6 +1,7 @@
 const User = require('./User');
 const Tourney = require('./Tourney');
 const Wallet = require('./Wallet');
+const Coins = require('./coins');
 
 User.hasMany(Tourney, {
     foreignKey: 'user_id'
@@ -16,6 +17,9 @@ Tourney.hasMany(Wallet, {
     foreignKey: 'tourney_id'
 });
 Wallet.hasMany(Coins, {
+    foreignKey: 'wallet_id'
+})
+Coins.BelongsTo(Wallet, {
     foreignKey: 'wallet_id'
 })
 Wallet.belongsTo(User, {
