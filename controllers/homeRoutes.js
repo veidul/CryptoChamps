@@ -13,15 +13,14 @@ router.get('/', async (req, res) => {
     router.get('/homepage', withAuth, async (req, res) => {
       try {
         // Find the logged in user based on the session ID
-        const coins = await User.findAll(req.session.user_id, {
-          attributes: { exclude: ['password'] },
+        const coinsData = await Coins.findAll(req.session.user_id, {
           include: [{ model: coins }],
         });
     
-        const user = userData.get({ plain: true });
+
     
         res.render('dashboard', {
-          ...user,
+        Coins,
           logged_in: true
         });
       } catch (err) {
