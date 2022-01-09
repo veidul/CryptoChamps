@@ -1,1 +1,3 @@
 # CryptoChamps
+
+BTC,ETH,UDST,BNB,SOL,USDC,ADA,XRP,LUNA,DOT
