@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
 router.get('/homepage', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
+    // adding in axios call so we can use data to populate
     const coinsData = await Coins.findAll();
 
     const coins = coinsData.map((coins) => coins.get({ plain: true }))
@@ -25,6 +26,7 @@ router.get('/homepage', withAuth, async (req, res) => {
     }
 
     res.render('homepage', {
+      // coinPrice,
       coins,
       logged_in: true
     });
