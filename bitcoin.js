@@ -4,8 +4,6 @@ const coinData = async () => {
     const response = await axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,UDST,BNB,SOL,USDC,ADA,XRP,LUNA,DOT,USD&tsyms=USD&api_key=06cdcb1f8cd5ced9c1a2b7a5acf8be80d74315bd49d57263cfee49051f2460b3');
      //extract JSON from the http response
     // do something with myJson
-
-    const coinsData= response.data
-    console.log(coinsData)
+    console.log(response.data)
   }
   coinData();
