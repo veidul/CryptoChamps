@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const {Wallet, Tourney } = require("../../models");
+const withAuth = require('../../utils/auth');
 // need to figure out how to add wallet id when creating new tournament
 router.post('/', withAuth, async (req, res) =>{
     try {
@@ -27,3 +28,6 @@ router.put('/:id', async (req, res) =>{
         res.status(500).json(err)
     }
 })
+
+
+module.exports = router;

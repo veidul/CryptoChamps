@@ -2,6 +2,7 @@
 <div class=container>
 <h1>Your Tournaments</h1>
 <ul>
+  {{#if tourneyLive}}
 {{#each tourneyLive as |live|}}
 <li>
   <h1>Tournamet Id: {{live.id}}</h1>
@@ -22,6 +23,7 @@
   <button data-id:{{live.id}}>View Tournament</button>
 </li>
 {{/each}}
+{{/if}}
 </ul>
  <button onclick="location.href = '/tournament';" type="submit" class="btn btn-primary">Create A Tournament</button>
 </div>
