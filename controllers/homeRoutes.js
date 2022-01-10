@@ -13,44 +13,43 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/homepage', withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    // adding in axios call so we can use data to populate
+  
+    try {
+
     const tourneyLive = await Tourney.findAll({where: {user: req.session.user_id}})
     // need to find a way to see if the tournament has started or not yet
-    const upcomingTourney = await Tourney.findAll({where: {startTime > timeNow}})
+    // const upcomingTourney = await Tourney.findAll({where: {startTime > timeNow}})
+
     const coinsData = await Coins.findAll();
 
-    const coins = coinsData.map((coins) => coins.get({ plain: true }))
-    const apiData = await axios.get(apiKey)
-    for (let i = 0; i < coins.length; i++) {
-      coins[i].currentPrice = apiData.data[coins[i].ticker].USD
-    }
-
     res.render('homepage', {
-      // coinPrice,
-      coins,
+      tourneyLive,
+      upcomingTourney,
       logged_in: true
-    });
+    })
   } catch (err) {
     res.status(500).json(err);
   }
-})
+});
 
 
 // Use withAuth middleware to prevent access to route
-router.get("/tournament/", withAuth, async (req, res) => {
+router.get("/tournament", withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const coinsData = await Coins.findAll();
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
     });
+    const apiData = await axios.get(apiKey)
+    for (let i = 0; i < coins.length; i++) {
+      coins[i].currentPrice = apiData.data[coins[i].ticker].USD
+    }
     
     const coins = coinsData.map((coins) => coins.get({ plain: true }))
     const user = userData.get({ plain: true });
 
-    res.render("tournament", {
+    res.render('tournament', {
       ...user,
       coins,
       logged_in: true,
