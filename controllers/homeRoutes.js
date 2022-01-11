@@ -21,7 +21,17 @@ router.get("/homepage", withAuth, async (req, res) => {
     // need to find a way to see if the tournament has started or not yet
     // const upcomingTourney = await Tourney.findAll({where: {startTime > timeNow}})
 
+<<<<<<< HEAD
+    const coins = coinsData.map((coins) => coins.get({ plain: true }))
+    console.log(coins)
+    const apiData = await axios.get(apiKey)
+    console.log(apiData.data)
+    for (let i = 0; i < coins.length; i++) {
+      coins[i].currentPrice = apiData.data[coins[i].ticker].USD
+    }
+=======
     // const coinsData = await Coins.findAll();
+>>>>>>> 414778c09555ba80860add0fa57fb01bc5b21658
 
     res.render("homepage", {
       // tourneyLive,
@@ -76,4 +86,9 @@ const coin = {
   dynamicPrice: 414123,
 };
 
+<<<<<<< HEAD
+
+
+=======
 coin.newThing = "whatever";
+>>>>>>> 414778c09555ba80860add0fa57fb01bc5b21658

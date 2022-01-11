@@ -5,5 +5,5 @@ const coinData = async () => {
      //extract JSON from the http response
     // do something with myJson
     console.log(response.data)
-  }
+}
   coinData();
