@@ -20,7 +20,9 @@ router.get('/homepage', withAuth, async (req, res) => {
     const coinsData = await Coins.findAll();
 
     const coins = coinsData.map((coins) => coins.get({ plain: true }))
+    console.log(coins)
     const apiData = await axios.get(apiKey)
+    console.log(apiData.data)
     for (let i = 0; i < coins.length; i++) {
       coins[i].currentPrice = apiData.data[coins[i].ticker].USD
     }
@@ -81,4 +83,6 @@ const coin = {
 }
 
 coin.newThing = 'whatever'
+
+
 
