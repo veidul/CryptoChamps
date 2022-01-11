@@ -45,6 +45,7 @@ router.get("/homepage", withAuth, async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get("/tournament", withAuth, async (req, res) => {
   try {
+    const tourneyId = req.query.id
     // Find the logged in user based on the session ID
     const coinsData = await Coins.findAll();
     const coins = coinsData.map((coins) => coins.get({ plain: true }));
@@ -54,6 +55,7 @@ router.get("/tournament", withAuth, async (req, res) => {
     }
 
     res.render("tournament", {
+      tourneyId,
       coins,
       logged_in: req.session.logged_in,
     });

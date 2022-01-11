@@ -19,10 +19,16 @@ const tourneyData = [
         finishTime: "2022-01-17 10:30:00"
     },
     {
-        user: "1",
+        user: "3",
         startTime: "2022-01-16 10:30:00",
         finishTime: "2022-01-17 10:30:00"
-    }
+    },
+    {
+        user: "3",
+        startTime: "2022-01-16 10:30:00",
+        finishTime: "2022-01-17 10:30:00"
+    },
+
 ]
 
 const seedTourney = async () => {
