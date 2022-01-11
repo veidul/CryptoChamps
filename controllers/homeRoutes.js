@@ -3,7 +3,7 @@ const axios = require('axios')
 const { User, Coins, Tourney } = require("../models");
 const withAuth = require("../utils/auth");
 const apiKey =
-  "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,USDT,BNB,SOL,USDC,ADA,XRP,LUNA,DOT,AVAX,DOGE,SHIB,MATIC,BUSD,CRO,WBTC,LINK,UST,UNI&tsyms=USD,EUR&api_key=06cdcb1f8cd5ced9c1a2b7a5acf8be80d74315bd49d57263cfee49051f2460b3";
+  "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,AVAX,BNB,SOL,DOGE,ADA,XRP,LUNA,DOT&tsyms=USD,EUR&api_key=06cdcb1f8cd5ced9c1a2b7a5acf8be80d74315bd49d57263cfee49051f2460b3";
 
 router.get("/", async (req, res) => {
   try {
@@ -21,17 +21,13 @@ router.get("/homepage", withAuth, async (req, res) => {
     // need to find a way to see if the tournament has started or not yet
     // const upcomingTourney = await Tourney.findAll({where: {startTime > timeNow}})
 
-<<<<<<< HEAD
-    const coins = coinsData.map((coins) => coins.get({ plain: true }))
-    console.log(coins)
-    const apiData = await axios.get(apiKey)
-    console.log(apiData.data)
-    for (let i = 0; i < coins.length; i++) {
-      coins[i].currentPrice = apiData.data[coins[i].ticker].USD
-    }
-=======
-    // const coinsData = await Coins.findAll();
->>>>>>> 414778c09555ba80860add0fa57fb01bc5b21658
+    // const coins = coinsData.map((coins) => coins.get({ plain: true }))
+    // console.log(coins)
+    // const apiData = await axios.get(apiKey)
+    // console.log(apiData.data)
+    // for (let i = 0; i < coins.length; i++) {
+    //   coins[i].currentPrice = apiData.data[coins[i].ticker].USD
+    // }
 
     res.render("homepage", {
       // tourneyLive,
@@ -86,9 +82,5 @@ const coin = {
   dynamicPrice: 414123,
 };
 
-<<<<<<< HEAD
 
 
-=======
-coin.newThing = "whatever";
->>>>>>> 414778c09555ba80860add0fa57fb01bc5b21658
