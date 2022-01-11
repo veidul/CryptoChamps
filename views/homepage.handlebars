@@ -2,10 +2,9 @@
 <div class=container>
 <h1>Your Tournaments</h1>
 <ul>
-  {{#if tourneyLive}}
-{{#each tourneyLive as |live|}}
+{{#each tourneyLiveData as |live|}}
 <li>
-  <h1>Tournamet Id: {{live.id}}</h1>
+  <h1>Tournament Id: {{live.id}}</h1>
   <h2>Start Time: {{live.startTime}}</h2>
   <button data-id:{{live.id}}>View Tournament</button>
 </li>
@@ -16,14 +15,13 @@
 <div class=container>
 <h1>Upcoming Tournaments</h1>
 <ul>
-{{#each tourneyLive as |live|}}
+{{#each upcomingTourneyData as |up|}}
 <li>
-  <h1>Tournamet Id: {{live.id}}</h1>
-  <h2>Start Time: {{live.startTime}}</h2>
-  <button data-id:{{live.id}}>View Tournament</button>
+  <h1>Tournament Id: {{up.id}}</h1>
+  <h2>Start Time: {{up.startTime}}</h2>
+  <button data-id:{{up.id}}>View Tournament</button>
 </li>
 {{/each}}
-{{/if}}
 </ul>
  <button onclick="location.href = '/tournament';" type="submit" class="btn btn-primary">Create A Tournament</button>
 </div>
