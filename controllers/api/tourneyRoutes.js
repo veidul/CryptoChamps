@@ -10,9 +10,9 @@ router.get("/:", withAuth, async (req, res) => {
       const coins = coinsData.map((coins) => coins.get({ plain: true }));
       const apiData = await axios.get(apiKey);
       for (let i = 0; i < coins.length; i++) {
-        coins[i].currentPrice = apiData.data[coins[i].ticker].USD;
+        coins[i].currentPrice = apiData.data[coins[i].ticker].USD;console.log(coins)
       }
-  
+      
       res.render("tournament", {
           tourneyId,
         coins,

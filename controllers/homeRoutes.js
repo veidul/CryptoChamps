@@ -53,7 +53,6 @@ router.get("/tournament", withAuth, async (req, res) => {
     for (let i = 0; i < coins.length; i++) {
       coins[i].currentPrice = apiData.data[coins[i].ticker].USD;
     }
-
     res.render("tournament", {
       tourneyId,
       coins,

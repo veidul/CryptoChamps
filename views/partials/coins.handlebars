@@ -1,26 +1,44 @@
-
-
 {{#each coins as |coin|}}
-<div class="card float-child" style="width: 18rem;">
-  <br>
-  <div class="img-container">
-  <img class="card-image" src="{{coin.img}}" alt="Avatar">
-  </div>
-  <div class="card-body">
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">{{coin.name}}</h5>
-    <h6 class=>{{coin.ticker}}</h6>
-    <p>Current Price<br>${{coin.currentPrice}}</p>
-  <div class="form-group">
+  <div class="card float-child" style="width: 18rem;">
+    <br />
+    <div class="img-container">
+      <img class="card-image" src="{{coin.img}}" alt="Avatar" />
+    </div>
+    <div class="card-body">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{coin.name}}</h5>
+      <h6 class>{{coin.ticker}}</h6>
+      <div class="form-group">
+        <p>Current Price<br></p>
+      <p class="currentPrice">{{coin.currentPrice}}</p>
         <label for="coin-quantity">Quantity: </label>
-        <input class="form-input" type=number step=any default="0" id="{{coin.ticker}}-quantity" />
+        <input
+          class="form-input quantity"
+          type="number"
+          step="any"
+          onchange="updateCost(event)"
+          data-price={{coin.currentPrice}}
+          default="0"
+          id="{{coin.ticker}}-quantity"
+        />
         <div class="cost">Total Cost: </div>
+        <div class="cost-output"></div>
       </div>
-    
-    
-    <button type=submit id={{coin.ticker}}>Add to Wallet</button>
+      <button type="submit" class="coin" id={{coin.ticker}}>Add to Wallet</button>
+    </div>
   </div>
-</div>
 {{/each}}
+<script>
+  const updateCost = (event) =>{ 
+  const val = document.querySelector('.quantity').value;
+  const price = event.target.dataset.price
+  const totalCost = (val,price) =>{
+    let a = val*price
+    return a
+  }
+  const costOutput = event.target.parentElement.lastElementChild.textContent = totalCost(val,price)
+  }
+</script>
+<script src="./js/coins.js"></script>
 <script src="./js/helpers.js"></script>
