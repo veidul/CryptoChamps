@@ -1,27 +1,38 @@
-{{!--current tournament list --}}
-<div class=container>
-<h1>Your Tournaments</h1>
-<ul>
-{{#each tourneyLiveData as |live|}}
-<li>
-  <h1>Tournament Id: {{live.id}}</h1>
-  <h2>Start Time: {{live.startTime}}</h2>
-  <button data-id:{{live.id}}>View Tournament</button>
-</li>
-{{/each}}
-</ul>
+{{!current tournament list }}
+<div class="tourney-container">
+  <h1>Your Tournaments</h1>
+  <hr />
+  {{#each tourneyLiveData as |live|}}
+    <hr />
+    <div class>
+
+      <h1>Tournament Id: {{live.id}}</h1>
+      <h2>Start Time: {{format_date live.startTime}}</h2>
+      <button data-id: {{live.id}}>View Tournament</button>
+      <hr />
+    </div>
+  {{/each}}
 </div>
-{{!-- join/create tournament list --}}
-<div class=container>
-<h1>Upcoming Tournaments</h1>
-<ul>
-{{#each upcomingTourneyData as |up|}}
-<li>
-  <h1>Tournament Id: {{up.id}}</h1>
-  <h2>Start Time: {{up.startTime}}</h2>
-  <button data-id:{{up.id}}>View Tournament</button>
-</li>
-{{/each}}
-</ul>
- <button onclick="location.href = '/tournament';" type="submit" class="btn btn-primary">Create A Tournament</button>
+{{! join/create tournament list }}
+<div class="tourney-container" style="padding-top: 20px">
+  <h1>Upcoming Tournaments</h1>
+
+  {{#each upcomingTourneyData as |up|}}
+    <hr />
+    <div class>
+
+      <h1>Tournament Id: {{up.id}}</h1>
+      <h2>Start Time: {{format_date up.startTime}}</h2>
+      <button onclick="location.href = '/tournament?id={{up.id}}';" type="submit" class="btn btn-primary">Join
+        Tournament</button>
+
+    </div>
+    <hr />
+  {{/each}}
+
+  <button
+    onclick="location.href = '/tournament';"
+    type="submit"
+    class="btn btn-primary"
+  >Create A Tournament</button>
 </div>
