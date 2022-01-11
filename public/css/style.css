@@ -2,6 +2,15 @@ header,
 .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
+img {
+  border-radius: 100%;
+}
+.img-container{
+  display:flex;
+  width:100px;
+  height: 100px;
+  object-fit: contain;
+}
 
 .no-button {
   background: none;
@@ -23,3 +32,25 @@ header,
   font-weight: bold;
   margin-left: -5px;
 }
+.wrapper{
+  display:flex;
+  justify-content:space-between;
+}
+.coin-container{
+  display:flex;
+  float:left;
+}
+.wallet-container{
+  height: 600px;
+  width: 300px;
+  border: 2px solid black;
+  float: right
+}
+.float-child {
+  width: 50%;
+  float: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding: 20px,;
+  border: 2px solid black;
+}  
