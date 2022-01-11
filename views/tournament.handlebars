@@ -1,10 +1,23 @@
 {{!-- list of coins --}}
 
-
-<div>
-<ul>
-{{> coins }}    
-</ul>
+<div class="wrapper">
+    <div class="coin-container" style= "height: 500px; width:630px; overflow-y: scroll;">
+        <div>
+            <ul>
+                {{> coins }}    
+            </ul>
+        </div>
+    </div>
+    <div class="wallet-container">
+        <h1>Wallet</h1>
+        <ul class="wallet-list">
+            <li>placeholder#1</li>
+            <li>placeholder#2</li>
+            <li>placeholder#3</li>
+        </ul>
+        <p>Total Cost: </p>
+        <p>Bank Left: </p>
+        <button id=create-tournament>Create Tournament</button>
+    </div>
 </div>
-
 {{!--need to do side bar of coins selected and total cost --}}
