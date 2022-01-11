@@ -17,10 +17,13 @@ router.get("/", async (req, res) => {
 
 router.get("/homepage", withAuth, async (req, res) => {
   try {
-    // const tourneyLive = await Tourney.findAll({where: {user: req.session.user_id}})
+    const tourneyLive = await Tourney.findAll({where: {user: req.session.user_id}})
     // need to find a way to see if the tournament has started or not yet
-    // const upcomingTourney = await Tourney.findAll({where: {startTime > timeNow}})
-
+    const upcomingTourney = await Tourney.findAll({where:  {user: null}})
+    const tourneyLiveData = tourneyLive.map((coins) => coins.get({ plain: true }));
+    const upcomingTourneyData = upcomingTourney.map((coins) => coins.get({ plain: true }));
+    // console.log(upcomingTourney, tourneyLive)
+    console.log(tourneyLiveData, upcomingTourneyData)
     // const coins = coinsData.map((coins) => coins.get({ plain: true }))
     // console.log(coins)
     // const apiData = await axios.get(apiKey)
@@ -30,8 +33,8 @@ router.get("/homepage", withAuth, async (req, res) => {
     // }
 
     res.render("homepage", {
-      // tourneyLive,
-      // upcomingTourney,
+      tourneyLiveData,
+      upcomingTourneyData,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -71,16 +74,6 @@ router.get("/login", (req, res) => {
 
 module.exports = router;
 
-const coin = {
-  id: 4,
-  img: "/imgs/BNB-logo.png",
-  name: "Binance Coin",
-  ticker: "BNB",
-  walletId: null,
-  wallet_id: null,
-  newThing: "whatever",
-  dynamicPrice: 414123,
-};
 
 
 

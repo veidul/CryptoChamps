@@ -1,5 +1,6 @@
 const seedUser = require('./user-seed');
 const seedCoins = require('./coins-seed');
+const seedTourney = require('./tournament-seed')
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
@@ -9,6 +10,8 @@ const seedAll = async () => {
   console.log('\n----- USER SEEDED -----\n');
   await seedCoins();
   console.log('\n----- COINS SEEDED -----\n');
+  await seedTourney();
+  console.log('\n----- TOURNEY SEEDED -----\n');
 
   process.exit(0);
 };

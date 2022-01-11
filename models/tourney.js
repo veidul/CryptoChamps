@@ -4,10 +4,10 @@ class Tourney extends Model {}
 
 Tourney.init({
   id: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
+    type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
+    autoIncrement: true,
   },
   user: {
     type: DataTypes.INTEGER,
@@ -24,7 +24,7 @@ Tourney.init({
     type: DataTypes.DATE,
     allowNull: false,
   },
-
+  
   // need to talk to partners to finish these
 },
 {
