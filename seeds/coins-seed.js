@@ -13,9 +13,9 @@ const coinData = [
         img: "/imgs/ETH-logo.png"
     },
     {
-        name: "Tether",
-        ticker: "USDT",
-        img: "/imgs/USDT-logo.png"
+        name: "Avalanche",
+        ticker: "AVAX",
+        img: "/imgs/AVAX-logo.png"
     },
     {
         name: "Binance Coin",
@@ -28,9 +28,9 @@ const coinData = [
         img: "/imgs/SOL-logo.png"
     },
     {
-        name: "USD Coin",
-        ticker: "USDC",
-        img: "/imgs/USDC-logo.png"
+        name: "Dogecoin",
+        ticker: "DOGE",
+        img: "/imgs/DOGE-logo.png"
     },
     {
         name: "Cardano",
