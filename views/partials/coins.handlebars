@@ -17,6 +17,7 @@
         <input
           class="form-input quantity"
           type="number"
+          min = "0"
           step="any"
           name="quantity"
           onchange="updateCost(event)"
@@ -25,7 +26,7 @@
           id="{{coin.ticker}}-quantity"
         />
         <div class="cost">Total Cost: </div>
-        <div class="cost-output"></div>
+        <div class="cost-output">0</div>
       </div>
       <button type="submit" class="coin" data-price={{coin.currentPrice}} data-ticker={{coin.ticker}} onClick="addToWallet(event)">Add to Wallet</button>
     </div>
@@ -33,30 +34,30 @@
 {{/each}}
 <script>
 const tickers = []
+let walletTotalCost = 0
   const updateCost = (event) =>{ 
-  const val = document.querySelector('.quantity').value;
+  const val = event.target.value;
   const price = event.target.dataset.price
-  const totalCost = (val,price) =>{
-    let a = val*price
-    return a
-  }
-  const costOutput = event.target.parentElement.lastElementChild.textContent = totalCost(val,price)
+  const total = val*price;
+  const costOutput = event.target.parentElement.lastElementChild.textContent = total
   }
   </script>
   <script>
   const addToWallet = (event) => {
+    const bank = 75000
+    console.log(bank,"bank log")
     let val = event.target.parentElement.children[2].children[3].value;
     let wallet = document.querySelector('.wallet-list')
     let price = event.target.dataset.price
     let ticker = event.target.dataset.ticker
-    const totalCost = (val,price) =>{
-    let a = val*price
-    return a
-    }
     tickers.push({ticker,price,quantity:val})
     var div = document.createElement('div');
-    div.innerHTML = `<li><h1>Ticker: ${ticker}</h1><p>Purchase Price: ${price}</p><p>Total Cost: ${totalCost(val,price)}</p><p>Quantity: ${val}<p><li>`;
-
+    const total = val*price;
+    if(bank < total) return alert("NOT ENOUGH!");
+    div.innerHTML = `<li><h1>Ticker: ${ticker}</h1><p>Purchase Price: ${price}</p><p>Total Cost: ${total}</p><p>Quantity: ${val}<p><li>`;
+    document.querySelector('.walletTotal').textContent = (`${walletCost(tickers)}`)
+    document.querySelector('.bankTotal').textContent = (`${bankCost(total,bank)}`)
+    console.log(bank,"bank log#2")
     wallet.append(div)
     console.log(tickers)
     walletCost(tickers)
