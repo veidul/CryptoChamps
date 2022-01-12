@@ -5,14 +5,20 @@ const getPrice = function(ticker){
 }
 
 const walletCost = (tickers) => {
-    const total = 0
-    let newTotal = total;
+    console.log(tickers[0].price,tickers[0].quantity,tickers.length);
+    let total = 0
     for(let i = 0; i < tickers.length; i++){
-        let total = 0
-       total + (tickers[i].price*tickers[i].quantity) 
+        
+       total = total + (tickers[i].price*tickers[i].quantity) 
        console.log(total,"total")
-       console.log(newTotal,"new total")
+
+       
     }
+    //return the total 
+    return total
     
-    return newTotal
     }
+ const bankCost = (total, bank) => {
+     bank=bank-total
+     return bank
+ }  
