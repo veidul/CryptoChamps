@@ -1,3 +1,4 @@
+
 {{#each coins as |coin|}}
   <div class="card float-child" style="width: 18rem;">
     <br />
@@ -6,9 +7,9 @@
     </div>
     <div class="card-body">
     </div>
-    <div class="card-body">
+    <div class="card-body coinContainer">
       <h5 class="card-title">{{coin.name}}</h5>
-      <h6 class>{{coin.ticker}}</h6>
+      <h6 class="card-ticker">{{coin.ticker}}</h6>
       <div class="form-group">
         <p>Current Price<br></p>
       <p class="currentPrice">{{coin.currentPrice}}</p>
@@ -17,6 +18,7 @@
           class="form-input quantity"
           type="number"
           step="any"
+          name="quantity"
           onchange="updateCost(event)"
           data-price={{coin.currentPrice}}
           default="0"
@@ -25,11 +27,12 @@
         <div class="cost">Total Cost: </div>
         <div class="cost-output"></div>
       </div>
-      <button type="submit" class="coin" id={{coin.ticker}}>Add to Wallet</button>
+      <button type="submit" class="coin" data-price={{coin.currentPrice}} data-ticker={{coin.ticker}} onClick="addToWallet(event)">Add to Wallet</button>
     </div>
   </div>
 {{/each}}
 <script>
+const tickers = []
   const updateCost = (event) =>{ 
   const val = document.querySelector('.quantity').value;
   const price = event.target.dataset.price
@@ -39,6 +42,27 @@
   }
   const costOutput = event.target.parentElement.lastElementChild.textContent = totalCost(val,price)
   }
+  </script>
+  <script>
+  const addToWallet = (event) => {
+    console.log(event.target.parentElement.children[2].children[3])
+    let val = event.target.parentElement.children[2].children[3].value;
+    let wallet = document.querySelector('.wallet-list')
+    let price = event.target.dataset.price
+    let ticker = event.target.dataset.ticker
+    console.log(price,ticker)
+    const totalCost = (val,price) =>{
+    let a = val*price
+    return a
+    }
+    tickers.push({ticker,price,quantity:val})
+    var div = document.createElement('div');
+    div.innerHTML = `<li><h1>Ticker: ${ticker}</h1><p>Purchase Price: ${price}</p><p>Total Cost: ${totalCost(val,price)}</p><p>Quantity: ${val}<p><li>`;
+
+    wallet.append(div)
+    console.log(tickers)
+  }
+
 </script>
 <script src="./js/coins.js"></script>
 <script src="./js/helpers.js"></script>

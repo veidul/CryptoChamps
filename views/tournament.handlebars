@@ -11,13 +11,22 @@
     <div class="wallet-container">
         <h1>Wallet</h1>
         <ul class="wallet-list">
-            <li>placeholder#1</li>
-            <li>placeholder#2</li>
-            <li>placeholder#3</li>
         </ul>
-        <p>Total Cost: </p>
+        <p class="totalCost">Total Cost: </p>
         <p>Bank Left: </p>
         <button id=create-tournament>Create Tournament</button>
     </div>
 </div>
 {{!--need to do side bar of coins selected and total cost --}}
+<script>
+const TotalCost = (tickers) => {
+    for(let i = 0; i < tickers.length; i++){
+        let total = 0
+        let newTotal;
+        total + (tickers.price[i]*tickers.val[i]) = newTotal
+    }
+    return newTotal
+    }
+    let updateWalletCost = document.querySelector('.totalCost').innerHTML(`'Total Cost: ${newTotal(tickers)}'`)
+    console.log(newTotal);
+</script>
