@@ -23,18 +23,8 @@ router.get("/homepage", withAuth, async (req, res) => {
     const upcomingTourneyUser = await Tourney.findAll({where:  {user: {[Op.notIn]:[req.session.user_id]}}});
     const upcomingTourneyNull = await Tourney.findAll({where:  {user: null}});
     const upcomingTourney = [...upcomingTourneyUser,...upcomingTourneyNull]
-    console.log(upcomingTourneyNull,upcomingTourneyUser)
     const tourneyLiveData = tourneyLive.map((coins) => coins.get({ plain: true }));
     const upcomingTourneyData = upcomingTourney.map((coins) => coins.get({ plain: true }));
-    // console.log(upcomingTourney, tourneyLive)
-    console.log(tourneyLiveData, upcomingTourneyData)
-    // const coins = coinsData.map((coins) => coins.get({ plain: true }))
-    // console.log(coins)
-    // const apiData = await axios.get(apiKey)
-    // console.log(apiData.data)
-    // for (let i = 0; i < coins.length; i++) {
-    //   coins[i].currentPrice = apiData.data[coins[i].ticker].USD
-    // }
 
     res.render("homepage", {
       tourneyLiveData,
