@@ -45,12 +45,10 @@ const tickers = []
   </script>
   <script>
   const addToWallet = (event) => {
-    console.log(event.target.parentElement.children[2].children[3])
     let val = event.target.parentElement.children[2].children[3].value;
     let wallet = document.querySelector('.wallet-list')
     let price = event.target.dataset.price
     let ticker = event.target.dataset.ticker
-    console.log(price,ticker)
     const totalCost = (val,price) =>{
     let a = val*price
     return a
@@ -61,6 +59,7 @@ const tickers = []
 
     wallet.append(div)
     console.log(tickers)
+    walletCost(tickers)
   }
 
 </script>
