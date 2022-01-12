@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const {Op} = require("sequelize");
 const axios = require('axios')
 const { User, Coins, Tourney } = require("../models");
 const withAuth = require("../utils/auth");
@@ -19,7 +20,10 @@ router.get("/homepage", withAuth, async (req, res) => {
   try {
     const tourneyLive = await Tourney.findAll({where: {user: req.session.user_id}})
     // need to find a way to see if the tournament has started or not yet
-    const upcomingTourney = await Tourney.findAll({where:  {user: null}})
+    const upcomingTourneyUser = await Tourney.findAll({where:  {user: {[Op.notIn]:[req.session.user_id]}}});
+    const upcomingTourneyNull = await Tourney.findAll({where:  {user: null}});
+    const upcomingTourney = [...upcomingTourneyUser,...upcomingTourneyNull]
+    console.log(upcomingTourneyNull,upcomingTourneyUser)
     const tourneyLiveData = tourneyLive.map((coins) => coins.get({ plain: true }));
     const upcomingTourneyData = upcomingTourney.map((coins) => coins.get({ plain: true }));
     // console.log(upcomingTourney, tourneyLive)
