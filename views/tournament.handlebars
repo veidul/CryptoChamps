@@ -16,7 +16,10 @@
             <span class="walletTotal">0</span>
             </p>
         <p>Bank Left: <span class="bankTotal">$75000</span></p>
-        <button id=create-tournament>Create Tournament</button>
+        {{#if tourneyId}}
+        <button id=join-tournament class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Join Tournament</button>{{else}}
+        <button id=create-tournament class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Tournament</button>
+        {{/if}}
     </div>
 </div>
 {{!--need to do side bar of coins selected and total cost --}}
