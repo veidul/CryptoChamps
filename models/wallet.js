@@ -5,10 +5,10 @@ class Wallet extends Model {}
 Wallet.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
-      primaryKey: true,
+      type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true,
     },
     ticker: {
       type: DataTypes.STRING,
@@ -22,9 +22,9 @@ Wallet.init(
       type: DataTypes.DECIMAL,
       allowNull: false,
     },
-    bank: {
+    total: {
       type: DataTypes.DECIMAL,
-      defaultValue: 25000,
+      allowNull: false,
     },
     userId: {
       type: DataTypes.INTEGER,
