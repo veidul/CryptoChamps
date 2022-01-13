@@ -17,15 +17,16 @@
             </p>
         <p>Bank Left: <span class="bankTotal">$75000</span></p>
         {{#if tourneyId}}
-        <button id=join-tournament class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Join Tournament</button>{{else}}
-        <button id=create-tournament class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Tournament</button>
+        <button onClick='joinTournament(event,userId)' id=join-tournament class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Join Tournament</button>{{else}}
+        <button onClick='createTournament(event,userId)' id=create-tournament class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Tournament</button>
         {{/if}}
     </div>
 </div>
 <script>
+    const tickers = [];
     var userId = {{user_id}};
-    var tourneyId = {{tourneyId}};
-    console.log(userId,tourneyId);
+   {{#if tourneyId}} var tourneyId = {{tourneyId}} {{/if}};
+
 </script>
 <script src="./js/coins.js"></script>
 <script src="./js/helpers.js"></script>

@@ -3,9 +3,11 @@ const { Wallet, Coins, Tourney } = require("../../models");
 const withAuth = require('../../utils/auth');
 // need to figure out how to add wallet to tourney when created
 router.post('/', withAuth, async (req, res) =>{
+
+    console.log(req.body)
     try {
-        const walletData = await Wallet.create({
-            ...req.body, user_id: req.session.user_id,
+        const walletData = await Wallet.Bulkcreate({
+            ...req.body,
         })
         res.status(200).json(walletData)
     }catch(err){
@@ -14,7 +16,7 @@ router.post('/', withAuth, async (req, res) =>{
     }
 })
 
-router.put('/:id', async (req, res) =>{
+router.put('/:id', withAuth, async (req, res) =>{
     try{
         const walletData = await Wallet.update(req.body, {
             where: {

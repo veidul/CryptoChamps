@@ -2,12 +2,19 @@ const User = require('./User');
 const Tourney = require('./Tourney');
 const Wallet = require('./Wallet');
 const Coins = require('./coins');
+const TourneyUser = require("./tourneyUser")
 
 
 User.hasMany(Wallet, {
     foreignKey: 'user_id',
     // onDelete: 'CASCADE'
 });
+// User.hasMany(Tourney, {
+//     foreignKey: 'tourney_id'
+// })
+// Tourney.hasMany(User), {
+//     foreignKey: 'user_id'
+// }
 Tourney.hasMany(Wallet, {
     foreignKey: 'tourney_id'
 });
@@ -24,10 +31,12 @@ Coins.belongsTo(Wallet, {
     foreignKey: 'wallet_id'
 })
 Tourney.belongsToMany(User, {
-    through: 'Tourney_User'
+    through: 'tourney_user',
+    foreignKey: "tourney_id"
   });
   
   User.belongsToMany(Tourney, {
-    through: 'Tourney_User'
+    through: 'tourney_user',
+    foreignKey: "user_id"
   });
-module.exports = { User, Tourney, Wallet, Coins };
+module.exports = { User, Tourney, Wallet, Coins, TourneyUser };
