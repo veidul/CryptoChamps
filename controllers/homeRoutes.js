@@ -39,7 +39,14 @@ router.get("/homepage", withAuth, async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get("/tournament", withAuth, async (req, res) => {
   try {
+    const userData = await User.findOne({ where: { id: req.session.user_id }
+    }); 
+    console.log(userData.dataValues.id, "before data.get")
+    const user = userData.get({ plain: true });
+    console.log(user, "after data.get")
+    user_id = user.id
     const tourneyId = req.query.id
+    console.log(tourneyId)
     // Find the logged in user based on the session ID
     const coinsData = await Coins.findAll();
     const coins = coinsData.map((coins) => coins.get({ plain: true }));
@@ -48,6 +55,7 @@ router.get("/tournament", withAuth, async (req, res) => {
       coins[i].currentPrice = apiData.data[coins[i].ticker].USD;
     }
     res.render("tournament", {
+      user_id,
       tourneyId,
       coins,
       logged_in: req.session.logged_in,

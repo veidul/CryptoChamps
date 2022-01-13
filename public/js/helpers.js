@@ -27,17 +27,18 @@ const walletCost = (tickers) => {
      bank=bank-total
      return bank
  }  
-const tickerChecker = ({ticker,price,quantity,total}) => {
+const tickerChecker = ({ticker,price,quantity,total,userId, tourneyId}) => {
     console.log(tickers)
     for(let i = 0; i < tickers.length; i++){
         if(ticker === tickers[i].ticker){
+        tickers[i].price = Number(tickers[i].price)
           tickers[i].quantity =  Number(quantity)+Number(tickers[i].quantity);
           tickers[i].total = Number(total)+Number(tickers[i].total);
           return
         }
     }
     
-  tickers.push({ticker,purchasePrice:price, quantity, total});
+  tickers.push({ticker, purchasePrice:price, quantity, total, userId, tourneyId});
     console.log(tickers)
 }
 const walletDisplay = (tickers) => {

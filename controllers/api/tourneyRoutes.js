@@ -1,10 +1,13 @@
 const router = require("express").Router();
-const {Wallet, Tourney , Coins} = require("../../models");
+const {Wallet, Tourney , Coins, User} = require("../../models");
 const withAuth = require('../../utils/auth');
 // need to figure out how to add wallet id when creating new tournament
 router.get("/:", withAuth, async (req, res) => {
     try {
-        const tourneyId = req.query.id
+        const userData = await User.findOne({ where: { id: req.session.user_id }
+          }); 
+          console.log(userData.dataValues.id)
+        const tourneyId = req.params.id
       // Find the logged in user based on the session ID
       const coinsData = await Coins.findAll();
       const coins = coinsData.map((coins) => coins.get({ plain: true }));
@@ -15,6 +18,7 @@ router.get("/:", withAuth, async (req, res) => {
       
       res.render("tournament", {
           tourneyId,
+          user,
         coins,
         logged_in: req.session.logged_in,
       });
