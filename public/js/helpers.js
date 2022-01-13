@@ -37,8 +37,8 @@ const tickerChecker = ({ticker,price,quantity,total}) => {
         }
     }
     
-  tickers.push({ticker,price,quantity, total});
-
+  tickers.push({ticker,purchasePrice:price, quantity, total});
+    console.log(tickers)
 }
 const walletDisplay = (tickers) => {
     let string = ""
