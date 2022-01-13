@@ -12,7 +12,7 @@
       <h6 class="card-ticker">{{coin.ticker}}</h6>
       <div class="form-group">
         <p>Current Price<br></p>
-      <p class="currentPrice">{{coin.currentPrice}}</p>
+      <p class="currentPrice">${{coin.currentPrice}}</p>
         <label for="coin-quantity">Quantity: </label>
         <input
           class="form-input quantity"
@@ -32,36 +32,5 @@
     </div>
   </div>
 {{/each}}
-<script>
-const tickers = [];
-let walletTotalCost = 0
-  var bank = 75000
-  const updateCost = (event) =>{ 
-  const val = event.target.value;
-  const price = event.target.dataset.price
-  const total = val*price;
-  const costOutput = event.target.parentElement.lastElementChild.textContent = total
-  }
-  </script>
-  <script>
-  const addToWallet = (event) => {
-    console.log(bank,"bank log")
-    let val = event.target.parentElement.children[2].children[3].value;
-    let wallet = document.querySelector('.wallet-list')
-    let price = event.target.dataset.price
-    let ticker = event.target.dataset.ticker
-    const total = val*price;
-    tickerChecker({ticker,price,quantity:val,total})
-    var div = document.createElement('div');
-    if(bank < total) return alert("NOT ENOUGH!");
-    div.innerHTML = walletDisplay(tickers);
-    document.querySelector('.walletTotal').textContent = (`${walletCost(tickers)}`)
-    document.querySelector('.bankTotal').textContent = (`${bankCost(total,bank)}`)
-    console.log(bank,"bank log#2")
-    wallet.innerHTML = "";
-    wallet.append(div)
-  }
-
-</script>
 <script src="./js/coins.js"></script>
 <script src="./js/helpers.js"></script>
