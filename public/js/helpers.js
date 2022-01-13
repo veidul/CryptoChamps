@@ -27,7 +27,7 @@ const walletCost = (tickers) => {
      bank=bank-total
      return bank
  }  
-const tickerChecker = ({ticker,purchasePrice,quantity,total,userId, tourneyId}) => {
+const tickerChecker = ({ticker,purchasePrice,quantity,total,userId}) => {
     console.log(tickers)
     for(let i = 0; i < tickers.length; i++){
         if(ticker === tickers[i].ticker){
@@ -37,7 +37,7 @@ const tickerChecker = ({ticker,purchasePrice,quantity,total,userId, tourneyId}) 
         }
     }
     
-  tickers.push({ticker, purchasePrice, quantity, total, userId, tourneyId});
+  tickers.push({ticker, purchasePrice, quantity, total, userId});
     console.log(tickers)
 }
 const walletDisplay = (tickers) => {
@@ -57,7 +57,7 @@ const addToWallet = (event) => {
     const total = val*purchasePrice;
     console.log(total)
     if(bank < total) return alert("NOT ENOUGH!");
-    tickerChecker({ticker,purchasePrice,quantity:val,total,userId,tourneyId})
+    tickerChecker({ticker,purchasePrice,quantity:val,total,userId})
     var div = document.createElement('div');
     div.innerHTML = walletDisplay(tickers);
     document.querySelector('.walletTotal').textContent = (`$ ${walletCost(tickers)}`)

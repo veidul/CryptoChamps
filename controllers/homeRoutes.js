@@ -1,38 +1,41 @@
 const router = require("express").Router();
 const {Op} = require("sequelize");
 const axios = require('axios')
-const { User, Coins, Tourney } = require("../models");
+const { User, Coins, Tourney, TourneyUser } = require("../models");
 const withAuth = require("../utils/auth");
 const apiKey =
   "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,AVAX,BNB,SOL,DOGE,ADA,XRP,LUNA,DOT&tsyms=USD,EUR&api_key=06cdcb1f8cd5ced9c1a2b7a5acf8be80d74315bd49d57263cfee49051f2460b3";
 
 router.get("/", async (req, res) => {
-  try {
-    res.render("homepage", {
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
+  if( req.session.logged_in){
+    res.redirect("/homepage")
+  }else{
+    res.render("login")
   }
 });
 
 router.get("/homepage", withAuth, async (req, res) => {
   try {
-    const tourneyLive = await Tourney.findAll({where: {user: req.session.user_id}})
+    const tourneyLive = await TourneyUser.findAll({where: {user_id: req.session.user_id}});
     // need to find a way to see if the tournament has started or not yet
-    const upcomingTourneyUser = await Tourney.findAll({where:  {user: {[Op.notIn]:[req.session.user_id]}}});
-    const upcomingTourneyNull = await Tourney.findAll({where:  {user: null}});
-    const upcomingTourney = [...upcomingTourneyUser,...upcomingTourneyNull]
-    const tourneyLiveData = tourneyLive.map((coins) => coins.get({ plain: true }));
-    const upcomingTourneyData = upcomingTourney.map((coins) => coins.get({ plain: true }));
+    // const upcomingTourneyNull = await TourneyUser.findAll({where:  {user_id: null}});
+    // const upcomingTourney = [...upcomingTourneyUser,...upcomingTourneyNull]
+    const tourneyLiveData = tourneyLive.map((t) => t.get({ plain: true }));
+    const liveTourneys = tourneyLiveData.map(({tourney_id})=> tourney_id);
+    const upcomingTourneys = await Tourney.findAll({where:  {id: {[Op.notIn]:liveTourneys}}});
+    const upcomingFiltered = upcomingTourneys.map(a=> a.get({plain: true}));
+    // console.log(upcomingTourneyUser);
+
+    // const upcomingTourneyData = upcomingTourney.map((coins) => coins.get({ plain: true }));
 
     res.render("homepage", {
       tourneyLiveData,
-      upcomingTourneyData,
+      upcomingFiltered,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
-    res.status(500).json(err);
+    console.log(err);
+    res.render("error")
   }
 });
 
