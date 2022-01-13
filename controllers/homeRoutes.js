@@ -65,6 +65,20 @@ router.get("/tournament", withAuth, async (req, res) => {
   }
 });
 
+router.put('/tournament/:', withAuth, async (req, res) =>{
+  try{
+      const tourneyData = await Tourney.update(req.body, {
+          where: {
+              id: req.query
+          }
+      })
+      res.status(200).json(tourneyData)
+  }catch(err){
+      console.log(err)
+      res.status(500).json(err)
+  }
+})
+
 router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {

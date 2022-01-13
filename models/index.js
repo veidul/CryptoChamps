@@ -8,6 +8,12 @@ User.hasMany(Wallet, {
     foreignKey: 'user_id',
     // onDelete: 'CASCADE'
 });
+// User.hasMany(Tourney, {
+//     foreignKey: 'tourney_id'
+// })
+// Tourney.hasMany(User), {
+//     foreignKey: 'user_id'
+// }
 Tourney.hasMany(Wallet, {
     foreignKey: 'tourney_id'
 });
