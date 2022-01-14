@@ -106,10 +106,15 @@ router.get("/tournament/view/?", withAuth, async (req, res) => {
         return wallet;
       });
       return player;
+    }).sort(({wallet: walletA},{wallet: walletB})=> {
+      const aTotal = walletA.reduce((t, {quantity, currentPrice, total})=> t+ currentPrice*quantity-total, 0);
+      const bTotal = walletB.reduce((t, {quantity, currentPrice, total})=> t+ currentPrice*quantity-total, 0);
+      return bTotal - aTotal
     });
     // console.log(JSON.parse(walletData));
     // const wallet = JSON.parse(walletData.wallet);
     // console.log(wallet);
+
     console.log(walletMeta);
     res.render("view", {
       logged_in: req.session.logged_in,

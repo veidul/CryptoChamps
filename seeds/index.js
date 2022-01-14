@@ -18,5 +18,3 @@ const seedAll = async () => {
 
 seedAll();
 
-
-1641945600
