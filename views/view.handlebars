@@ -1,23 +1,35 @@
-<p>this is the tournament/view</p>
-
-{{#each players as |player|}}
-<div class="max-w-sm rounded overflow-hidden shadow-lg">
-  <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2">Player # {{player.user_id}}</div>
-    <p class="text-gray-700 text-base"></p>
-  </div>
-  <div class="px-6 pt-4 pb-2">
+<div class="player-container">
+  {{#each players as |player|}}
+  <div class="max-w-sm rounded overflow-hidden shadow-lg player-card">
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2">Player # {{player.user_id}}</div>
+      <p class="text-gray-700 text-base"></p>
+    </div>
+    <div class="px-6 pt-4 pb-2">
       <ul>
-      {{#each player.wallet as |wallet|}}
-        <h6>{{wallet.ticker}}</h6>
-        <p>{{wallet.purchasePrice}}</p>
-        <p>{{wallet.quantity}}</p>
-        <p>{{wallet.total}}</p>
-        <p>{{wallet.currentPrice}}</p>
-        
+        <h2>TOTAL CHANGE: {{getDiffAll player.wallet}}</h2>
+        {{#each player.wallet as |wallet|}}
+        <h6>Ticker: {{wallet.ticker}}</h6>
+        <p>Purchase Price: ${{wallet.purchasePrice}}</p>
+        <p>Quantity: {{wallet.quantity}}</p>
+        <p>Total Cost At Purchase: ${{wallet.total}}</p>
+        <p>Current Price: ${{wallet.currentPrice}}</p>
+        <p>Current Price Difference: ${{getDiff wallet}}</p>
 
-    {{/each}}</ul>
-    {{#each coins as |coin|}}{{coin}}{{/each}}
-</div>
+
+        {{/each}}
+      </ul>
+      {{#each coins as |coin|}}{{coin}}{{/each}}
+    </div>
+  </div>
 {{/each}}
-<script></script>
+</div>
+<style>
+  .player-card:first-child {
+    background-color: green;
+  }
+  .player-card:last-child {
+    background-color: red;
+  }
+
+</style>

@@ -10,5 +10,8 @@ module.exports = {
   return  moment(date).format("dddd, MMMM Do YYYY, h:mm:ss a");
 
     
-  }
+  },
+  getDiff: ({quantity, currentPrice, total}) => currentPrice*quantity-total,
+  getDiffAll: (wallet) => wallet.reduce((t, {quantity, currentPrice, total})=> t+ currentPrice*quantity-total, 0)
+  
 };
