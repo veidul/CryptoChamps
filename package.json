@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "postcss public/css/styles.css -o public/build/styles.css --watch",
+    "build": "tailwindcss -o public/css/style.css --watch",
+    "watch": "npx tailwind --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "seed": "node seeds/index.js",

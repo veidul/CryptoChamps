@@ -1,43 +1,33 @@
 {{#each coins as |coin|}}
-  <div class="card float-child" style="width: 18rem;">
-    <br />
-    <div class="img-container">
-      <img class="card-image" src="{{coin.img}}" alt="Avatar" />
+  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+    <img class="w-full" src="{{coin.img}}" alt="Sunset in the mountains" />
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+      <p class="text-gray-700 text-base">
+        {{coin.name}}
+      </p>
     </div>
-    <div class="card-body">
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">{{coin.name}}</h5>
-      <h6 class>{{coin.ticker}}</h6>
-      <div class="form-group">
-        <p>Current Price<br></p>
-      <p class="currentPrice">{{coin.currentPrice}}</p>
-        <label for="coin-quantity">Quantity: </label>
-        <input
-          class="form-input quantity"
-          type="number"
-          step="any"
-          onchange="updateCost(event)"
-          data-price={{coin.currentPrice}}
-          default="0"
-          id="{{coin.ticker}}-quantity"
-        />
-        <div class="cost">Total Cost: </div>
-        <div class="cost-output"></div>
-      </div>
-      <button type="submit" class="coin" id={{coin.ticker}}>Add to Wallet</button>
+    <div class="px-6 pt-4 pb-2">
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Button
+      </button>
+      <span
+        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+      >#travel</span>
+      <span
+        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+      >#winter</span>
     </div>
   </div>
 {{/each}}
 <script>
-  const updateCost = (event) =>{ 
-  const val = document.querySelector('.quantity').value;
-  const price = event.target.dataset.price
-  const totalCost = (val,price) =>{
-    let a = val*price
-    return a
-  }
-  const costOutput = event.target.parentElement.lastElementChild.textContent = totalCost(val,price)
+  const updateCost = (event) =>{ const val =
+  document.querySelector('.quantity').value; const price =
+  event.target.dataset.price const totalCost = (val,price) =>{ let a = val*price
+  return a } const costOutput =
+  event.target.parentElement.lastElementChild.textContent = totalCost(val,price)
   }
 </script>
 <script src="./js/coins.js"></script>
