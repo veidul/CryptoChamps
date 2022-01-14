@@ -1,2 +1,23 @@
 <p>this is the tournament/view</p>
+
+{{#each players as |player|}}
+<div class="max-w-sm rounded overflow-hidden shadow-lg">
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2">Player # {{player.user_id}}</div>
+    <p class="text-gray-700 text-base"></p>
+  </div>
+  <div class="px-6 pt-4 pb-2">
+      <ul>
+      {{#each player.wallet as |wallet|}}
+        <h6>{{wallet.ticker}}</h6>
+        <p>{{wallet.purchasePrice}}</p>
+        <p>{{wallet.quantity}}</p>
+        <p>{{wallet.total}}</p>
+        <p>{{wallet.currentPrice}}</p>
+        
+
+    {{/each}}</ul>
+    {{#each coins as |coin|}}{{coin}}{{/each}}
+</div>
+{{/each}}
 <script></script>

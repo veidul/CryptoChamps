@@ -77,31 +77,47 @@ router.get("/tournament/view/?", withAuth, async (req, res) => {
   try {
     const tourneyData = await TourneyUser.findAll({
       where: { tourney_id: req.query.tourney },
-      include: [User],
     });
     const tourneyWallet = tourneyData.map((tourney) =>
       tourney.get({ plain: true })
     );
-    const walletMeta = tourneyWallet.map((w) => ({
+    let walletMeta = tourneyWallet.map((w) => ({
       ...w,
       wallet: JSON.parse(w.wallet),
     }));
-    // const walletFunc = (walletMeta) => {
-    //   const tourneyWallets = [];
-    //   for (let i = 0; i < walletMeta.length; i++) {
-    //     tourneyWallets.push(walletMeta[i].wallet);
-    //   }
-    //   return tourneyWallets;
-    // };
-    // console.log(walletFunc(walletMeta));
-
+    console.log(walletMeta[0]);
+    const coinsData = await Coins.findAll();
+    const coins = coinsData.map((coins) => coins.get({ plain: true }));
+    const apiData = await axios.get(apiKey);
+    for (let i = 0; i < coins.length; i++) {
+      coins[i].currentPrice = apiData.data[coins[i].ticker].USD;
+    }
+    walletMeta = walletMeta.map((player, i) => {
+      console.log("PLAYER", player);
+      player.wallet = player.wallet.map((wallet, j) => {
+        console.log(
+          "WALLET",
+          wallet,
+          coins.find((coin) => coin.ticker === wallet.ticker)
+        );
+        wallet.currentPrice = coins.find(
+          (coin) => coin.ticker === wallet.ticker
+        ).currentPrice;
+        return wallet;
+      });
+      return player;
+    });
     // console.log(JSON.parse(walletData));
     // const wallet = JSON.parse(walletData.wallet);
     // console.log(wallet);
+    console.log(walletMeta);
     res.render("view", {
       logged_in: req.session.logged_in,
+      players: walletMeta,
+      coins,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
