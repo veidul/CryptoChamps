@@ -8,7 +8,12 @@
 
       <h1>Tournament Id: {{live.tourney_id}}</h1>
       <h2>Start Time: {{format_date live.startTime}}</h2>
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" data-id: {{live.tourney_id}}>View Tournament</button>
+      <button
+        onclick="location.href = '/tournament/view/?tourney={{live.tourney_id}}'"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        data-id:
+        {{live.tourney_id}}
+      >View Tournament</button>
       <hr />
     </div>
   {{/each}}
@@ -23,8 +28,11 @@
 
       <h1>Tournament Id: {{up.id}}</h1>
       <h2>Start Time: {{format_date up.startTime}}</h2>
-      <button onclick="location.href = '/tournament?id={{up.id}}';" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Join
-        Tournament</button>
+      <button
+        onclick="location.href = '/tournament?id={{up.id}}';"
+        type="submit"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >Join Tournament</button>
 
     </div>
     <hr />
