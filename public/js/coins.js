@@ -4,13 +4,11 @@ const joinTournament = async (event) => {
   console.log(event, user);
   console.log(user);
   if (tourneyId) {
-    const id = tourneyId;
-
     const response = await fetch(`/api/tournament`, {
       method: "POST",
       body: JSON.stringify({
         user_id: user,
-        tourney_id: id,
+        tourney_id: tourneyId,
         wallet: JSON.stringify(tickers),
       }),
       headers: { "Content-Type": "application/json" },
@@ -35,8 +33,12 @@ const createTournament = async (event) => {
   const user = userId;
   console.log(event, user);
   console.log(user);
-  const start = new Date(Date.now() + 3600000 * 24).toISOString();
-  const finish = new Date(Date.now() + 3600000 * 24 * 2).toISOString();
+  const start = new Date(Date.now() + 3600000 * 24)
+    .moment()
+    .format("dddd, MMMM Do YYYY, h:mm:ss a");
+  const finish = new Date(Date.now() + 3600000 * 24 * 2)
+    .moment()
+    .format("dddd, MMMM Do YYYY, h:mm:ss a");
 
   const response = await fetch(`/api/tournament/create`, {
     method: "POST",

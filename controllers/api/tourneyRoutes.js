@@ -31,14 +31,24 @@ router.get("/", withAuth, async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     //look up tourney to get start/finish info
-    const tourney = await Tourney.findByPk(req.body.tourney_id).get({
-      plain: true,
+    const tourneyFind = await Tourney.findAll({
+      where: { id: req.body.tourney_id },
     });
-    console.log(tourney);
+    console.log(req.body.tourney_id);
+    if (!tourneyFind.length) {
+      console.log("no tourneys found");
+      return res.status(400);
+    }
+    const tourneyStart = tourneyFind[0].startTime;
+    const tourneyFinish = tourneyFind[0].finishTime;
+    // .get({
+    //   plain: true,
+    // });
+    console.log(tourneyFind, "tourney find console.log");
     const tourneyData = await TourneyUser.create({
       ...req.body,
-      startTime: tourney.startTime,
-      finishTime: tourney.finishTime,
+      startTime: tourneyStart,
+      finishTime: tourneyFinish,
     });
     res.status(200).json(tourneyData);
   } catch (err) {
