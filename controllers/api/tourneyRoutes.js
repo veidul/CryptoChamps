@@ -28,11 +28,13 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
-router.post("/",  async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     //look up tourney to get start/finish info
-    const tourney = await (await Tourney.findByPk(req.body.tourney_id)).get({plain:true});
-    console.log(tourney)
+    const tourney = await Tourney.findByPk(req.body.tourney_id).get({
+      plain: true,
+    });
+    console.log(tourney);
     const tourneyData = await TourneyUser.create({
       ...req.body,
       startTime: tourney.startTime,
@@ -45,14 +47,18 @@ router.post("/",  async (req, res) => {
   }
 });
 
-router.post("/create",  async (req, res) => {
+router.post("/create", async (req, res) => {
   try {
     //look up tourney to get start/finish info
-    const tourney = await Tourney.create({startTime:req.body.startTime,finishTime:req.body.finishTime})
-    
-    console.log(tourney)
+    const tourney = await Tourney.create({
+      startTime: req.body.startTime,
+      finishTime: req.body.finishTime,
+    });
+
+    console.log(tourney);
     const tourneyData = await TourneyUser.create({
-      ...req.body,tourney_id:tourney.id
+      ...req.body,
+      tourney_id: tourney.id,
     });
     res.status(200).json(tourneyData);
   } catch (err) {
@@ -60,6 +66,7 @@ router.post("/create",  async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 // need to see how to include wallet id when adding someone to tournament
 router.put("/:", withAuth, async (req, res) => {
   try {
