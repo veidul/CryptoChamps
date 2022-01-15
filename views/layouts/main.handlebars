@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/build/styles.css">
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Teko:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body class ="font-mono">
@@ -19,10 +20,10 @@
       </h1>
       <nav>
         {{#if logged_in}}
-        <a href="/homepage">Homepage</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a href="/homepage" class="home">Homepage</a> |
+        <button class="login no-button" id="logout">logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login" class="login">login</a>
         {{/if}}
       </nav>
     </header>

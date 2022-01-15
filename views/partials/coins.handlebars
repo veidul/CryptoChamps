@@ -7,10 +7,10 @@
     <div class="card-body">
     </div>
     <div class="card-body coinContainer">
-      <h5 class="card-title">{{coin.name}}</h5>
-      <h6 class="card-ticker">{{coin.ticker}}</h6>
+      <h1 class="card-title">{{coin.name}}</h5>
+      <h2 class="card-ticker">{{coin.ticker}}</h6>
       <div class="form-group">
-        <p>Current Price<br /></p>
+        <p>Current Price <br /></p>
         <p class="currentPrice">${{coin.currentPrice}}</p>
         <label for="coin-quantity">Quantity: </label>
         <input
@@ -36,4 +36,9 @@
       >Add to Wallet</button>
     </div>
   </div>
+  <style>
+    div, p, label{
+      font-size: 25px;
+    }
+  </style>
 {{/each}}

@@ -1,15 +1,15 @@
 <div class="player-container">
   {{#each players as |player|}}
-    <div class="max-w-sm rounded overflow-hidden shadow-lg player-card">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg player-card" style="outline: 2px solid black">
       <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">Player # {{player.user_id}}</div>
+        <div class="playerNum font-bold text-xl mb-2">Player # {{player.user_id}}</div>
         <p class="text-gray-700 text-base"></p>
       </div>
       <div class="px-6 pt-4 pb-2">
         <ul>
           <h2>TOTAL CHANGE: ${{getDiffAll player.wallet}}</h2>
           {{#each player.wallet as |wallet|}}
-            <div style="outline: 2px solid black;">
+            <div style="outline: 2px solid black">
               <h4>Ticker: {{wallet.ticker}}</h4>
               <p>Purchase Price: ${{wallet.purchasePrice}}</p>
               <p>Quantity: {{wallet.quantity}}</p>
@@ -25,7 +25,9 @@
   {{/each}}
 </div>
 <style>
-  .player-card:first-child { background-color: green; } .player-card:last-child
-  { background-color: red; }
-
+  .player-card:last-child{ background-color: red; }
+  .player-card:first-child { background-color: green; } 
+  .playerNum {
+    font-size: 50px;
+  }
 </style>
