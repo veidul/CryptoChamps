@@ -1,4 +1,3 @@
-{{!-- list of coins --}}
 
 <div class="wrapper">
     <div class="coin-container" style= "height: 500px; width:630px; overflow-y: scroll;">
@@ -8,14 +7,14 @@
             </ul>
         </div>
     </div>
-    <div class="wallet-container">
+    <div class="wallet-container" style= "height: auto;">
         <h1>Wallet</h1>
-        <ul class="wallet-list">
+        <ul class="wallet-list" >
         </ul>
-        <p>Wallet Total: 
+        <p>Wallet Total: <br>
             <span class="walletTotal">0</span>
             </p>
-        <p>Bank Left: <span class="bankTotal">$75000</span></p>
+        <p>Bank Left:<br> <span class="bankTotal">$75000</span></p>
         {{#if tourneyId}}
         <button onClick='joinTournament(event,userId)' id=join-tournament class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Join Tournament</button>{{else}}
         <button onClick='createTournament(event,userId)' id=create-tournament class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Tournament</button>
@@ -30,4 +29,3 @@
 </script>
 <script src="./js/coins.js"></script>
 <script src="./js/helpers.js"></script>
-{{!--need to do side bar of coins selected and total cost --}}

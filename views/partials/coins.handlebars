@@ -1,4 +1,3 @@
-
 {{#each coins as |coin|}}
   <div class="card float-child" style="width: 18rem;">
     <br />
@@ -11,13 +10,13 @@
       <h5 class="card-title">{{coin.name}}</h5>
       <h6 class="card-ticker">{{coin.ticker}}</h6>
       <div class="form-group">
-        <p>Current Price<br></p>
-      <p class="currentPrice">${{coin.currentPrice}}</p>
+        <p>Current Price<br /></p>
+        <p class="currentPrice">${{coin.currentPrice}}</p>
         <label for="coin-quantity">Quantity: </label>
         <input
           class="form-input quantity"
           type="number"
-          min = "0"
+          min="0"
           step="any"
           name="quantity"
           onchange="updateCost(event)"
@@ -28,7 +27,13 @@
         <div class="cost">Total Cost: </div>
         <div class="cost-output">0</div>
       </div>
-      <button type="submit" class="coin bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" data-price={{coin.currentPrice}} data-ticker={{coin.ticker}} onClick="addToWallet(event)">Add to Wallet</button>
+      <button
+        type="submit"
+        class="coin bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        data-price={{coin.currentPrice}}
+        data-ticker={{coin.ticker}}
+        onClick="addToWallet(event)"
+      >Add to Wallet</button>
     </div>
   </div>
 {{/each}}

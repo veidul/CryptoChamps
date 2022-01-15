@@ -6,9 +6,9 @@ Wallet.init(
   {
     id: {
       type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
     ticker: {
       type: DataTypes.STRING,
@@ -48,6 +48,5 @@ Wallet.init(
     underscored: true,
     modelName: "wallet",
   }
-  // need to talk to partners to finish these
 );
 module.exports = Wallet;

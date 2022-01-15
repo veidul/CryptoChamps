@@ -1,21 +1,17 @@
 {{!current tournament list }}
 <div class="tourney-container">
   <h1>Your Tournaments</h1>
-  <hr />
   {{#each tourneyLiveData as |live|}}
-    <hr />
-    <div class>
+    <div style="outline: 2px solid black;">
 
-      <h1>Tournament Id: {{live.tourney_id}}</h1>
-      <h2>Start Time: {{format_date live.startTime}}</h2>
+      <h2>Tournament Id: {{live.tourney_id}}</h2>
+      <h3>Start Time: {{format_date live.startTime}}</h3>
       <button
         onclick="location.href = '/tournament/view/?tourney={{live.tourney_id}}'"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         data-id:
         {{live.tourney_id}}
-      >View Tournament</button>
-      <hr />
-    </div>
+      >View Tournament</button></div>
   {{/each}}
 </div>
 {{! join/create tournament list }}
@@ -23,19 +19,14 @@
   <h1>Upcoming Tournaments</h1>
 
   {{#each upcomingFiltered as |up|}}
-    <hr />
-    <div class>
-
-      <h1>Tournament Id: {{up.id}}</h1>
-      <h2>Start Time: {{format_date up.startTime}}</h2>
+    <div style="outline: 2px solid black;">
+      <h2>Tournament Id: {{up.id}}</h2>
+      <h3>Start Time: {{format_date up.startTime}}</h3>
       <button
         onclick="location.href = '/tournament?id={{up.id}}';"
         type="submit"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >Join Tournament</button>
-
-    </div>
-    <hr />
+      >Join Tournament</button></div>
   {{/each}}
 
   <button
