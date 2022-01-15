@@ -1,7 +1,7 @@
-const User = require("./User");
-const Tourney = require("./Tourney");
-const Wallet = require("./Wallet");
-const Coins = require("./coins");
+const User = require("./user.js");
+const Tourney = require("./tourney.js");
+const Wallet = require("./wallet.js");
+const Coins = require("./coins.js");
 const TourneyUser = require("./tourneyUser");
 
 User.hasMany(Wallet, {
