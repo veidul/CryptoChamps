@@ -2,7 +2,7 @@
 <div class="tourney-container">
   <h1>Your Tournaments</h1>
   {{#each tourneyLiveData as |live|}}
-    <div style="outline: 2px solid black;">
+    <div style="outline: 2px solid white;">
 
       <h2>Tournament Id: {{live.tourney_id}}</h2>
       <h3>Start Time: {{format_date live.startTime}}</h3>
@@ -19,7 +19,7 @@
   <h1>Upcoming Tournaments</h1>
 
   {{#each upcomingFiltered as |up|}}
-    <div style="outline: 2px solid black;">
+    <div style="outline: 2px solid white;">
       <h2>Tournament Id: {{up.id}}</h2>
       <h3>Start Time: {{format_date up.startTime}}</h3>
       <button
