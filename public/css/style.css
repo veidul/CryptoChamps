@@ -1,7 +1,13 @@
 * {
   font-family: 'Bebas Neue', cursive;
   font-family: 'Teko', sans-serif;
+
 }
+
+body {
+  background-image: url('../imgs/background.jpg');
+  color: whitesmoke;
+ }
 div {
   font-size: medium;
 }
@@ -58,7 +64,7 @@ img {
 .wallet-container{
   height: 600px;
   width: 300px;
-  border: 2px solid black;
+  border: 2px solid white;
   float: right
 }
 .float-child {
@@ -67,8 +73,8 @@ img {
   padding-left: 20px;
   padding-right: 20px;
   padding: 20px,;
-  border: 2px solid black;
+  border: 2px solid white;
 }  
 .tourney-container {
-  border: 2px solid black;
+  border: 2px solid white;
 }

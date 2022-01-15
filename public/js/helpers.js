@@ -38,7 +38,7 @@ const tickerChecker = ({ ticker, purchasePrice, quantity, total, userId }) => {
 const walletDisplay = (tickers) => {
   let string = "";
   for (let i = 0; i < tickers.length; i++) {
-    string += `<div style="outline: 2px solid black;"><h1>Ticker: ${tickers[i].ticker}<h1><p>Purchase Price:$ ${tickers[i].purchasePrice}<br>Total Cost:$ ${tickers[i].total}<br>Quantity: ${tickers[i].quantity}<p><div>`;
+    string += `<div style="outline: 2px solid white; padding: 1rem"><h1>Ticker: ${tickers[i].ticker}</h1><p>Purchase Price:$ ${tickers[i].purchasePrice}<br>Total Cost:$ ${tickers[i].total}<br>Quantity: ${tickers[i].quantity}</p></div>`;
   }
   return string;
 };
