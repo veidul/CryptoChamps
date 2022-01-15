@@ -1,5 +1,5 @@
 # CryptoChamps
-# Group-Project-1 | Grubnüb
+# Group-Project-1 | Crypto Champs
 ## Description
 - Was to create a application that allows for multiple user input within the database.
 - We built this project to allow investors to test the skills while being placed in a competitive environment. 
@@ -23,9 +23,9 @@ Navigate to your GitHub repository in the browser and then select the Settings t
 
 ## Credits
 Github Contributors
-[Catalina](https://github.com/Am4z0nas21)
-[Rory](https://github.com/rorylivingston)
-[Alec](https://github.com/GrrHiGrr)
+[Ludie](https://github.com/veidul)
+[Vahan](https://github.com/scorpion77777)
+[Naji](https://github.com/nodgyd)
 
 Server Side Api's Utilized
 - CryptoCompare API
