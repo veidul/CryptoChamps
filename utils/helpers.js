@@ -7,11 +7,11 @@ module.exports = {
     return moment(date).format("dddd, MMMM Do YYYY, h:mm:ss a");
   },
   getDiff: ({ quantity, currentPrice, total }) =>
-    currentPrice * quantity - total,
+    parseFloat(currentPrice * quantity - total).toFixed(2),
   getDiffAll: (wallet) =>
-    wallet.reduce(
+    parseFloat(wallet.reduce(
       (t, { quantity, currentPrice, total }) =>
         t + currentPrice * quantity - total,
       0
-    ),
+    )).toFixed(2),
 };
