@@ -4,7 +4,7 @@ var bank = 75000;
 const updateCost = (event) => {
   const val = event.target.value;
   const price = event.target.dataset.price;
-  const total = val * price;
+  const total = parseFloat(val * price).toFixed(3);
   const costOutput =
     (event.target.parentElement.lastElementChild.textContent = `$ ${total}`);
 };
@@ -27,7 +27,7 @@ const tickerChecker = ({ ticker, purchasePrice, quantity, total, userId }) => {
   for (let i = 0; i < tickers.length; i++) {
     if (ticker === tickers[i].ticker) {
       tickers[i].quantity = Number(quantity) + Number(tickers[i].quantity);
-      tickers[i].total = Number(total) + Number(tickers[i].total);
+      tickers[i].total = parseFloat(Number(total) + Number(tickers[i].total)).toFixed(3);
       return;
     }
   }
