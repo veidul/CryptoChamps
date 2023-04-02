@@ -1,39 +1,41 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-class Coins extends Model { }
+class Coins extends Model {}
 
-Coins.init({
+Coins.init(
+  {
     id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        allowNull: false,
-        autoIncrement: true,
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false,
+      autoIncrement: true,
     },
     img: {
-        type: DataTypes.STRING,
-        allowNUll: false,
+      type: DataTypes.STRING,
+      allowNUll: false,
     },
     name: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     ticker: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     walletId: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: "wallet",
-            key: "id",
-        },
+      type: DataTypes.INTEGER,
+      references: {
+        model: "wallet",
+        key: "id",
+      },
     },
-},
-    {
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: "coins",
-    })
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "coins",
+  }
+);
 module.exports = Coins;
